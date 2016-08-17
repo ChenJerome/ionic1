@@ -1,0 +1,54 @@
+<!--流程超级查询界面-->
+<ion-view>
+
+  <ion-nav-title>流程超级查询({{pageInfo.allCount}})</ion-nav-title>
+  <ion-content ng-init="init()">
+    <ion-refresher pulling-text="刷新" on-refresh="refresh();">
+    </ion-refresher>
+    <ion-list>
+      <form>
+        <div class="custom-select-fq">
+          <div class="custom-select-se">
+            <select id="searchDefKey" ng-model="search.defKey">
+
+              <optgroup ng-repeat="d in flowDef" label="{{d.label}}">
+                <option ng-repeat="s in d.options" value="{{s.value}}">{{s.text}}</option>
+              </optgroup>
+            </select>
+          </div>
+          <i class="ion-ios-arrow-down"></i>
+        </div>
+        <div class="bar item-input-inset">
+          <label class="item-input-wrapper">
+            <i class="icon ion-ios-search placeholder-icon"></i>
+            <input type="search" ng-keyup="keyUp($event)" placeholder="发起人、任务主题、单据号" ng-model="search.searchText">
+          </label>
+          <span class="span-search">
+            <i ng-if="search.searchText != ''" ng-click="clearSearch()" class="icon ion-ios-close"></i>
+          </span>
+
+          <!--<button class="button button-clear" ng-click="query()">查询</button>-->
+        </div>
+      </form>
+      <ion-item ng-repeat="item in flowList" ng-click="itemClick(item)"
+                class="{{($index + 1)%2 == 0 ? 'item odd' : 'item'}}">
+        <div class="custom-split">
+          <span>{{$index + 1}}</span>
+          <span class="font14-black" ng-bind="item.subject"></span>
+          <span class="font12-999" ng-bind="item.BIZ_KEY"></span>
+          <span class="font12-999" ng-bind="item.startAuthor"></span>
+          <span class="font12-999">- 流程:<span ng-bind="item.wfName"></span></span>
+          <span class="font12-999" ng-bind="item.startTime">item.startTime</span>
+        </div>
+        <div class="custom-split">
+          <div class="font12-666"><span data-ng-bind-html="item.nowNodeInfo"></span></div>
+        </div>
+      </ion-item>
+    </ion-list>
+    <ion-infinite-scroll
+      icon="ion-loading-c"
+      on-infinite="loadMore();"
+      distance="10%">
+    </ion-infinite-scroll>
+  </ion-content>
+</ion-view>

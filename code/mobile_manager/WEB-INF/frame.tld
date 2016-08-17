@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee web-jsptaglibrary_2_0.xsd"
+    version="2.0">
+	<tlib-version>1.0</tlib-version>
+	<short-name>frame</short-name>
+    <!-- 定义该标签库的URI -->
+    <uri>com.purvar.frame</uri>
+	<!-- 定义第一个标签 -->
+    <tag>
+        <name>globalPage</name>
+        <tag-class>com.purvar.common.tag.GlobalPage</tag-class>
+        <bodycontent>JSP</bodycontent>
+        <attribute>
+			<name>pageName</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+    </tag>
+    
+    <tag>
+        <name>content</name>
+        <tag-class>com.purvar.common.tag.ContentTag</tag-class>
+        <bodycontent>JSP</bodycontent>
+        <attribute>
+			<name>replaceId</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+    </tag>
+    
+    <tag>
+		<name>contentPlace</name>
+		<tagclass>com.purvar.common.tag.ContentPlace</tagclass>
+		<bodycontent>JSP</bodycontent>
+		<attribute>
+			<name>id</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+</taglib>

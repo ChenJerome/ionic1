@@ -1,0 +1,383 @@
+<ion-modal-view align="center" ng-controller="formCtrl">
+  <ion-header-bar class="bar-positive" align-title="center">
+    <div ng-include="'templates/form-head.html'"></div>
+    <div class="title">出差申请{{formData.OA_TRAVEL_APPLICATION[0].APPLICATION_ID.val}}</div>
+  </ion-header-bar>
+  <ion-content delegate-handle="formMainScroll">
+	  <div ng-include="'templates/form-tab.html'"></div>
+    <div id="OA_TRAVEL_APPLICATION">
+      <div class="list">
+		  <div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				发起人 </span>
+			  <div class="custom-div"
+				   ng-bind="formData.OA_TRAVEL_APPLICATION[0].CREATEUSER.val"></div>
+		  </div>
+		  <div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				发起日期 </span>
+			  <div class="custom-div"
+				   ng-bind="formData.OA_TRAVEL_APPLICATION[0].CREATEDATE.val"></div>
+		  </div>
+		  <div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				出差人<FONT color=#ff0000>*</FONT> </span>
+
+			  <div id="APPLYEMP" class="custom-div custom-div-autocomplete">
+				  <input type="text" class="custom-input input-autocomplete"
+						 ng-model="formData.OA_TRAVEL_APPLICATION[0].TRAVEL_USER.val"/>
+				  <button ng-click="showSelectAPPLYEMP()" class="button button-calm button-autocomplete">选择
+				  </button>
+				  <div class="custom-select-r" style="display: none">
+					  <select class="" id="APPLYEMP_auto">
+						  <option ng-repeat="person in APPLYEMPS | filter:formData.OA_TRAVEL_APPLICATION[0].TRAVEL_USER.val"
+								  value="{{ person.DISPLAYNAME+ ',' + person.FULLNAME+ ',' + person.DEP_CODE+ ',' + person.COMPANY_FULLNAME+ ',' + person.COMPANY_CODE+ ',' + person.CERT_NAME}}">
+							  {{person.EMPLOYEE_FULL}}
+						  </option>
+					  </select>
+				  </div>
+			  </div>
+		  </div>
+		  <div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				出差人所属公司 </span>
+			  <div class="custom-div"
+				   ng-bind="formData.OA_TRAVEL_APPLICATION[0].COMPANY.val"></div>
+		  </div>
+		  <div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				出差人所属部门 </span>
+			  <div class="custom-div"
+				   ng-bind="formData.OA_TRAVEL_APPLICATION[0].TRAVEL_USER_DEP.val"></div>
+		  </div>
+		  <div class="item item-input custom-item-input" >
+			  <span class="input-label custom-input-label ">
+				差旅类型<FONT color=#ff0000>*</FONT> </span>
+			  <div class="custom-select"   >
+				  <select class="" id="clselect" ng-model="formData.OA_TRAVEL_APPLICATION[0].TRAVLE_TYPE_FOR_SUBSIDY.val" >
+					  <option value="" >--请选择--</option>
+					  <!--<option value="{{lx.CATEGORY_VALUE}}" ng-repeat="lx in HTLX">{{lx.DISPLAY}}</option>-->
+					  <option value="{{lx.CATEGORY_VALUE}}"
+							  ng-if="formData.OA_TRAVEL_APPLICATION[0].TRAVLE_TYPE_FOR_SUBSIDY.val.indexOf(lx.CATEGORY_VALUE) >= 0" selected
+							  ng-repeat="lx in CL">{{lx.DISPLAY}}
+					  </option>
+					  <option value="{{lx.CATEGORY_VALUE}}"
+							  ng-if="formData.OA_TRAVEL_APPLICATION[0].TRAVLE_TYPE_FOR_SUBSIDY.val.indexOf(lx.CATEGORY_VALUE) < 0"
+							  ng-repeat="lx in CL">{{lx.DISPLAY}}
+					  </option>
+				  </select>
+			  </div>
+			  <i class="ion-ios-arrow-down" ></i>
+		  </div>
+		  <div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				费用所属部门/项目<FONT color=#ff0000>*</FONT>  </span>
+			  <ion-radio ng-model="formData.OA_TRAVEL_APPLICATION[0].FEE_TYPE.val" ng-value="'0'"
+						 ng-click="showandHide()">部门
+			  </ion-radio>
+			  <ion-radio ng-model="formData.OA_TRAVEL_APPLICATION[0].FEE_TYPE.val" ng-value="'1'"
+						 ng-click="showandHide()">项目
+			  </ion-radio>
+		  </div>
+		  <div class="item item-input custom-item-input" id="costdepname">
+			<span class="input-label custom-input-label ">
+				费用所属部门<FONT color=#ff0000>*</FONT>  </span>
+
+			  <div id="Autocompleteorg" class="custom-div custom-div-autocomplete">
+				  <input type="text" class="custom-input input-autocomplete"
+						 ng-model="formData.OA_TRAVEL_APPLICATION[0].FEE_DEP.val"/>
+				  <button ng-click="showSelectAutocompleteorg()" class="button button-calm button-autocomplete">
+					  选择
+				  </button>
+				  <div class="custom-select-r" style="display: none">
+					  <select class="" id="Autocompleteorg_auto">
+						  <option ng-repeat="dept in DEPFULLNAME | filter:formData.OA_TRAVEL_APPLICATION[0].FEE_DEP.val"
+								  value="{{dept.DEP_CODE}}">
+							  {{dept.FULLNAME}}
+						  </option>
+					  </select>
+				  </div>
+			  </div>
+		  </div>
+		  <div class="item item-input custom-item-input" id="projname1">
+			<span class="input-label custom-input-label ">
+				费用所属项目<FONT color=#ff0000>*</FONT>  </span>
+
+			  <div id="Autocomplete5" class="custom-div custom-div-autocomplete">
+				  <input type="text" class="custom-input input-autocomplete"
+						 ng-model="formData.OA_TRAVEL_APPLICATION[0].FEE_PROJ.val"/>
+				  <button ng-click="showSelectAutocomplete5()" class="button button-calm button-autocomplete">选择
+				  </button>
+				  <div class="custom-select-r" style="display: none">
+					  <select class="" id="Autocomplete5_auto">
+						  <option ng-repeat="project in PROJECTNAME | filter:formData.OA_TRAVEL_APPLICATION[0].FEE_PROJ.val"
+								  value="{{project.PROJECT_MAIN_CODE}}">
+							  {{project.PROJECT_MAIN_NAME}}
+						  </option>
+					  </select>
+				  </div>
+			  </div>
+		  </div>
+		  <div class="item item-input custom-item-input" id="projname2">
+			<span class="input-label custom-input-label ">
+				 </span>
+
+			  <div id="Autocomplete4" class="custom-div custom-div-autocomplete">
+				  <input type="text" class="custom-input input-autocomplete"
+						 ng-model="formData.OA_TRAVEL_APPLICATION[0].COSTDEPNAME.val"/>
+				  <button ng-click="showSelectAutocomplete4()" class="button button-calm button-autocomplete">选择
+				  </button>
+				  <div class="custom-select-r" style="display: none">
+					  <select class="" id="Autocomplete4_auto">
+						  <option ng-repeat="project in COSTDEPNAME | filter:formData.OA_TRAVEL_APPLICATION[0].COSTDEPNAME.val"
+								  value="{{project.DEP_ID}}">
+							  {{project.FULLNAME}}
+						  </option>
+					  </select>
+				  </div>
+			  </div>
+		  </div>
+		  <div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				费用所属公司<FONT color=#ff0000>*</FONT> </span>
+			  <div id="FEECOMPANY" class="custom-div custom-div-autocomplete">
+				  <input type="text" class="custom-input input-autocomplete" ng-model="formData.OA_TRAVEL_APPLICATION[0].FEE_COMPANY.val"/>
+				  <button ng-click="showSelectINVENTEDLEAD()" class="button button-calm button-autocomplete" >选择</button>
+				  <div class="custom-select-r" style="display: none">
+					  <select class="" id="FEECOMPANY_auto">
+						  <option ng-repeat="company in COMPANYS | filter:formData.OA_TRAVEL_APPLICATION[0].FEE_COMPANY.val" value="{{company.COMPANY_CODE + ',' + company.DISNAME}}">
+							  {{company.DISNAME}}
+						  </option>
+					  </select>
+				  </div>
+			  </div>
+		  </div>
+		  <div class="item item-input custom-item-input" >
+			  <span class="input-label custom-input-label ">
+				费用所属成本中心<FONT color=#ff0000>*</FONT></span>
+			  <div class="custom-select"   >
+				  <select class="" id="cbzxselect" ng-model="formData.OA_TRAVEL_APPLICATION[0].COST_CENTER_CODE.val" >
+					  <option value="" >--请选择--</option>
+					  <!--<option value="{{lx.CATEGORY_VALUE}}" ng-repeat="lx in HTLX">{{lx.DISPLAY}}</option>-->
+					  <option value="{{lx.COST_CENTER_CODE}}"
+							  ng-if="formData.OA_TRAVEL_APPLICATION[0].COST_CENTER_CODE.val.indexOf(lx.COST_CENTER_CODE) >= 0" selected
+							  ng-repeat="lx in CBZX">{{lx.COST_CENTER_FULLNAME}}
+					  </option>
+					  <option value="{{lx.COST_CENTER_CODE}}"
+							  ng-if="formData.OA_TRAVEL_APPLICATION[0].COST_CENTER_CODE.val.indexOf(lx.COST_CENTER_CODE) < 0"
+							  ng-repeat="lx in CBZX">{{lx.COST_CENTER_FULLNAME}}
+					  </option>
+				  </select>
+			  </div>
+			  <i class="ion-ios-arrow-down" ></i>
+		  </div>
+		  <div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				补提流程<FONT color=#ff0000>*</FONT>  </span>
+			  <ion-radio ng-model="formData.OA_TRAVEL_APPLICATION[0].IS_SUBMIT_SUPPLEMENT.val" ng-value="'1'" name="btlc">是
+			  </ion-radio>
+			  <ion-radio ng-model="formData.OA_TRAVEL_APPLICATION[0].IS_SUBMIT_SUPPLEMENT.val" ng-value="'0'" name="btlc">否
+			  </ion-radio>
+		  </div>
+		  <div class="item item-input custom-item-input" style="display: none">
+			<span class="input-label custom-input-label ">
+				出差人证件姓名</span>
+			  <div class="custom-div"
+				   ng-bind="formData.OA_TRAVEL_APPLICATION[0].TRAVEL_USER_PASSNAME.val"></div>
+		  </div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				预计出差天数<FONT color=#ff0000>*</FONT> </span>
+				<div class="custom-div">
+					<input type="text"  class="custom-input"
+						   ng-model="formData.OA_TRAVEL_APPLICATION[0].EXPECTED_TRAVEL_DAYS.val"/>
+				</div>
+		</div>
+		  <div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				说明</span>
+			  <div class="custom-div"><FONT color=#ff0000>*是否订协议酒店，选择“是”时，必须选择协议酒店，需线下自行预订，不可通过携程预订；选择“否”时，可以通过携程预订</FONT></div>
+		  </div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				备注 </span>
+				<textarea class="custom-textarea" rows="4"
+									 ng-model="formData.OA_TRAVEL_APPLICATION[0].REMARKS.val"></textarea>
+		</div>
+
+		      </div>
+    </div>
+	  <div ng-include="'templates/proc-list.html'"></div>
+    <div class="detail-list">
+	      <div class="detail-list-bg">
+      
+        <div class="detail-title" ng-click="showOrHideDetail('detail-OA_TRAVEL_APPLICATION_DETAIL',$event)">
+          	行程
+          <i class="ion-plus detail-title-ion"></i>
+        </div>
+        <div style="display: none" class="detail-info" id="detail-OA_TRAVEL_APPLICATION_DETAIL">
+          <div class="list"  ng-repeat="detail in formData.OA_TRAVEL_APPLICATION_DETAIL">
+			  <div class="item item-input custom-item-input" >
+				  <span class="list-index">{{$index+1}}</span>
+			  <span class="input-label custom-input-label ">
+				行程<FONT color=#ff0000>*</FONT> </span>
+				  <div class="custom-select"   >
+					  <select class="" id="xcSelect{{$index}}" ng-model="detail.GO_BACK_TYPE.val" >
+						  <option value="" >--请选择--</option>
+						  <!--<option value="{{lx.CATEGORY_VALUE}}" ng-repeat="lx in HTLX">{{lx.DISPLAY}}</option>-->
+						  <option value="{{lx.CATEGORY_VALUE}}"
+								  ng-if="detail.GO_BACK_TYPE.val.indexOf(lx.CATEGORY_VALUE) >= 0" selected
+								  ng-repeat="lx in XC">{{lx.DISPLAY}}
+						  </option>
+						  <option value="{{lx.CATEGORY_VALUE}}"
+								  ng-if="detail.GO_BACK_TYPE.val.indexOf(lx.CATEGORY_VALUE) < 0"
+								  ng-repeat="lx in XC">{{lx.DISPLAY}}
+						  </option>
+					  </select>
+				  </div>
+				  <i class="ion-ios-arrow-down" ></i>
+			  </div>
+			  <div class="item item-input custom-item-input" >
+			  <span class="input-label custom-input-label ">
+				订票类型<FONT color=#ff0000>*</FONT> </span>
+				  <div class="custom-select"   >
+					  <select class="" id="cllxSelect{{$index}}" ng-model="detail.TRAVEL_TYPE.val" >
+						  <option value="" >--请选择--</option>
+						  <!--<option value="{{lx.CATEGORY_VALUE}}" ng-repeat="lx in HTLX">{{lx.DISPLAY}}</option>-->
+						  <option value="{{lx.CATEGORY_VALUE}}"
+								  ng-if="detail.TRAVEL_TYPE.val.indexOf(lx.CATEGORY_VALUE) >= 0" selected
+								  ng-repeat="lx in CLLX">{{lx.DISPLAY}}
+						  </option>
+						  <option value="{{lx.CATEGORY_VALUE}}"
+								  ng-if="detail.TRAVEL_TYPE.val.indexOf(lx.CATEGORY_VALUE) < 0"
+								  ng-repeat="lx in CLLX">{{lx.DISPLAY}}
+						  </option>
+					  </select>
+				  </div>
+				  <i class="ion-ios-arrow-down" ></i>
+			  </div>
+			  <div class="item item-input custom-item-input" >
+			  <span class="input-label custom-input-label ">
+				交通工具<FONT color=#ff0000>*</FONT> </span>
+				  <div class="custom-select"   >
+					  <select class="" id="jtgjSelect{{$index}}" ng-model="detail.TRAVEL_TOOL.val" >
+						  <option value="" >--请选择--</option>
+						  <!--<option value="{{lx.CATEGORY_VALUE}}" ng-repeat="lx in HTLX">{{lx.DISPLAY}}</option>-->
+						  <option value="{{lx.CATEGORY_VALUE}}"
+								  ng-if="detail.TRAVEL_TOOL.val.indexOf(lx.CATEGORY_VALUE) >= 0" selected
+								  ng-repeat="lx in JTGJ">{{lx.DISPLAY}}
+						  </option>
+						  <option value="{{lx.CATEGORY_VALUE}}"
+								  ng-if="detail.TRAVEL_TOOL.val.indexOf(lx.CATEGORY_VALUE) < 0"
+								  ng-repeat="lx in JTGJ">{{lx.DISPLAY}}
+						  </option>
+					  </select>
+				  </div>
+				  <i class="ion-ios-arrow-down" ></i>
+			  </div>
+			  <div class="item item-input custom-item-input">
+			  <span class="input-label custom-input-label ">开始时间<FONT
+					  color=#ff0000>*</FONT></span>
+				  <input id="START_DATE{{$index}}" type="text" mobiscroll-date  ng-change="countdays()"
+						 ng-model="detail.START_DATE.val"/>
+				  <i class="ion-calendar"></i>
+			  </div>
+			  <div class="item item-input custom-item-input">
+				  <span class="input-label custom-input-label ">
+					  出发城市<FONT color=#ff0000>*</FONT></span>
+				  <div class="custom-div">
+					  <input type="text" class="custom-input"
+							 ng-model="detail.START_CITY.val"/>
+				  </div>
+			  </div>
+                        <div class="item item-input custom-item-input">
+                            <span class="input-label custom-input-label ">
+								到达城市<FONT color=#ff0000>*</FONT></span>
+              <div class="custom-div">
+				  <input type="text" class="custom-input"
+						 ng-model="detail.END_CITY.val"/>
+			  </div>
+            </div>
+			  <div class="item item-input custom-item-input" >
+			  <span class="input-label custom-input-label ">
+				是否住宿<FONT color=#ff0000>*</FONT> </span>
+				  <div class="custom-select"   >
+					  <select class="" id="sfzsSelect{{$index}}" ng-model="detail.ISSTAY.val" ng-change="changezhusu($index)">
+						  <option value="" >--请选择--</option>
+						  <!--<option value="{{lx.CATEGORY_VALUE}}" ng-repeat="lx in HTLX">{{lx.DISPLAY}}</option>-->
+						  <option value="{{lx.CATEGORY_VALUE}}"
+								  ng-if="detail.ISSTAY.val.indexOf(lx.CATEGORY_VALUE) >= 0" selected
+								  ng-repeat="lx in SFZS">{{lx.DISPLAY}}
+						  </option>
+						  <option value="{{lx.CATEGORY_VALUE}}"
+								  ng-if="detail.ISSTAY.val.indexOf(lx.CATEGORY_VALUE) < 0"
+								  ng-repeat="lx in SFZS">{{lx.DISPLAY}}
+						  </option>
+					  </select>
+				  </div>
+				  <i class="ion-ios-arrow-down" ></i>
+			  </div>
+			  <div class="item item-input custom-item-input">
+				  <span class="input-label custom-input-label ">住宿城市</span>
+				  <div class="custom-div" ng-bind="detail.HOTEL_ADDRESS.val"></div>
+			  </div>
+			  <div class="item item-input custom-item-input" >
+			  <span class="input-label custom-input-label ">
+				是否订协议酒店<FONT color=#ff0000>*</FONT> </span>
+				  <div class="custom-select" id="sfxyjddiv{{$index}}">
+					  <select class="" id="sfxyjdSelect{{$index}}" ng-model="detail.IS_AGREEMENT_HOTEL.val"  ng-change="changexieyi($index)">
+						  <option value="" >--请选择--</option>
+						  <!--<option value="{{lx.CATEGORY_VALUE}}" ng-repeat="lx in HTLX">{{lx.DISPLAY}}</option>-->
+						  <option value="{{lx.CATEGORY_VALUE}}"
+								  ng-if="detail.IS_AGREEMENT_HOTEL.val.indexOf(lx.CATEGORY_VALUE) >= 0" selected
+								  ng-repeat="lx in SFXYJD">{{lx.DISPLAY}}
+						  </option>
+						  <option value="{{lx.CATEGORY_VALUE}}"
+								  ng-if="detail.IS_AGREEMENT_HOTEL.val.indexOf(lx.CATEGORY_VALUE) < 0"
+								  ng-repeat="lx in SFXYJD">{{lx.DISPLAY}}
+						  </option>
+					  </select>
+				  </div>
+				  <i class="ion-ios-arrow-down" ></i>
+			  </div>
+			  <div class="item item-input custom-item-input" >
+			  <span class="input-label custom-input-label ">
+				协议酒店<FONT color=#ff0000>*</FONT> </span>
+				  <div class="custom-select"  id="xyjddiv{{$index}}" >
+					  <select class="" id="xyjdSelect{{$index}}" ng-model="detail.AGREEMENT_HOTEL.val" >
+						  <option value="" >--请选择--</option>
+						  <!--<option value="{{lx.CATEGORY_VALUE}}" ng-repeat="lx in HTLX">{{lx.DISPLAY}}</option>-->
+						  <option value="{{lx.CITY_NAME}}"
+								  ng-if="detail.AGREEMENT_HOTEL.val.indexOf(lx.CITY_NAME) >= 0" selected
+								  ng-repeat="lx in XYJD">{{lx.CITY_NAME}}
+						  </option>
+						  <option value="{{lx.CITY_NAME}}"
+								  ng-if="detail.AGREEMENT_HOTEL.val.indexOf(lx.CITY_NAME) < 0"
+								  ng-repeat="lx in XYJD">{{lx.CITY_NAME}}
+						  </option>
+					  </select>
+				  </div>
+				  <i class="ion-ios-arrow-down" ></i>
+			  </div>
+                        <div class="item item-input custom-item-input">
+                            <span class="input-label custom-input-label ">
+								具体事由<FONT color=#ff0000>*</FONT></span>
+              <div class="custom-div">
+				  <input type="text" class="custom-input"
+						 ng-model="detail.REASON.val"/>
+			  </div>
+            </div>
+			  <div class="item item-input custom-item-input">
+				  <span class="input-label custom-input-label ">随同人员</span>
+				  <div class="custom-div" ng-bind="detail.WITH_PEOPLE.val"></div>
+			  </div>
+			  <div class="item item-input custom-item-input">
+				  <span class="input-label custom-input-label ">备注</span>
+				  <div class="custom-div" ng-bind="detail.REMARK.val"></div>
+			  </div>
+                      </div>
+        </div>
+      </div>
+          </div>
+  </ion-content>
+</ion-modal-view>

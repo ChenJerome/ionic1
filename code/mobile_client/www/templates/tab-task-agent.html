@@ -1,0 +1,40 @@
+<!--代理任务列表-->
+<ion-view view-title="代理">
+  <ion-nav-title>代理任务({{agentName}})</ion-nav-title>
+  <ion-content on-drag-down="alert(1)">
+    <ion-refresher pulling-text="刷新" on-refresh="refresh();"></ion-refresher>
+    <ion-list>
+      <form>
+        <div class="bar item-input-inset">
+          <label class="item-input-wrapper">
+            <i class="icon ion-ios-search placeholder-icon"></i>
+            <input type="search" placeholder="发起人、任务摘要、单据号" ng-keyup="keyUp($event)" ng-model="search.searchText">
+          </label>
+          <span class="span-search">
+            <i ng-if="search.searchText != ''" ng-click="clearSearch()" class="icon ion-ios-close"></i>
+          </span>
+          <!--<button class="button button-clear" ng-click="queryUser()">查询</button>-->
+        </div>
+      </form>
+      <ion-item ng-repeat="item in agentTaskList" ng-click="itemClick(item,'待办')" class="{{($index + 1)%2 == 0 ? 'item odd' : 'item'}}">
+        <div class="custom-split">
+          <span>{{$index + 1}}</span>
+          <span class="font14-black" ng-bind="item.NODENAME"></span>
+          <span class="font12-999" ng-bind="item.FVALUE"></span>
+          <span class="font12-999">- 流程:<span ng-bind="item.WFNAME"></span></span>
+        </div>
+        <div class="custom-split">
+          <div class="font12-666">
+            任务主题:<span ng-bind="item.DESCRIPTION"></span>
+            <span class="arrive-time" ng-bind="item.CREATETIME"></span>
+          </div>
+        </div>
+      </ion-item>
+    </ion-list>
+    <ion-infinite-scroll
+      icon="ion-loading-d"
+      on-infinite="loadMore();"
+      distance="1%">
+    </ion-infinite-scroll>
+  </ion-content>
+</ion-view>

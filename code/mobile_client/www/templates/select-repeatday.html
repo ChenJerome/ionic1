@@ -1,0 +1,13 @@
+<!-- <ion-checkbox ng-repeat="day in today">{{day}}</ion-checkbox> -->
+<!-- <ion-checkbox ng-click="setSelectRepeatDay(day);" ng-repeat="day in today">{{day}}</ion-checkbox> -->
+<label class="item item-checkbox" ng-repeat="day in today">
+    <div class="checkbox checkbox-input-hidden disable-pointer-events checkbox-circle">
+        <input type="checkbox" value="on" item="{{day}}"><i class="checkbox-icon"></i></div>
+    <div class="item-content disable-pointer-events">
+        <span class="ng-binding" ng-bind="day"></span>
+    </div>
+</label>
+<div class="repeatCtrl">
+    <a class="button" ng-click="getSelectRepeatDay();">确认</a>
+    <a class="button" ng-click="closeSelectRepeatDayCtrl();">取消</a>
+</div>

@@ -1,0 +1,22 @@
+<!--任务驳回，根据任务实例-->
+<div class="assgin-list-popup">
+  <div class="assign-info">请选择任务:</div>
+  <div>
+    <table>
+      <thead>
+        <tr>
+          <td>任务名称</td>
+          <td>处理人</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="roll-back-tr" ng-repeat=" task in taskListEnd" ng-click="selectRollBackTask('{{task.id}}', $event)">
+          <td>{{task.nodeName}}</td>
+          <td>
+            {{task.assignessName}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

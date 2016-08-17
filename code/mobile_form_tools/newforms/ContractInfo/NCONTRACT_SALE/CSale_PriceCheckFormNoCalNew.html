@@ -1,0 +1,155 @@
+<ion-modal-view align="center" ng-controller="formCtrl">
+  <ion-header-bar class="bar-positive" align-title="center">
+    <div ng-include="'templates/form-head.html'"></div>
+    <div class="title">测试单申请</div>
+  </ion-header-bar>
+  <ion-content delegate-handle="formMainScroll">
+
+    <div>
+      <div class="list">
+     			<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				发起人 </span> <input type="text" class="custom-input"
+				ng-model="formData.NCONTRACT_SALE[0].PROMOTER.val" />
+		</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				发起人编号 </span> <input type="text" class="custom-input"
+				ng-model="formData.NCONTRACT_SALE[0].PROMOTER_ID.val" />
+		</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				申请日期 </span> <input type="text" class="custom-input"
+				ng-model="formData.NCONTRACT_SALE[0].PROMOTDATE.val" />
+		</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				责任人编号 </span> <input type="text" class="custom-input"
+				ng-model="formData.NCONTRACT_SALE[0].RESP_PERSON_ID.val" />
+		</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				责任人部门编号 </span> <input type="text" class="custom-input"
+				ng-model="formData.NCONTRACT_SALE[0].RESP_DEPARTMENT_CODE.val" />
+		</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				责任助理 </span> <input type="text" class="custom-input"
+				ng-model="formData.NCONTRACT_SALE[0].RESP_ASSITANT.val" />
+		</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				签约公司编号 </span> <input type="text" class="custom-input"
+				ng-model="formData.NCONTRACT_SALE[0].COMPANY_CODE.val" />
+		</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				客户编号 </span> <input type="text" class="custom-input"
+				ng-model="formData.NCONTRACT_SALE[0].CUSTOMER_CODE.val" />
+		</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				责任人 </span> <input type="text" class="custom-input"
+				ng-model="formData.NCONTRACT_SALE[0].RESP_PERSON.val" />
+		</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				备注 </span> <input type="text" class="custom-input"
+				ng-model="formData.NCONTRACT_SALE[0].REMARKS.val" />
+		</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				责任部门 </span> <input type="text" class="custom-input"
+				ng-model="formData.NCONTRACT_SALE[0].RESP_DEP_NAME.val" />
+		</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				客户名称 </span> <input type="text" class="custom-input"
+				ng-model="formData.NCONTRACT_SALE[0].CUSTOMER.val" />
+		</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				合同名称 </span> <input type="text" class="custom-input"
+				ng-model="formData.NCONTRACT_SALE[0].CONTRACT_NAME.val" />
+		</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				业务单元 </span> <input type="text" class="custom-input"
+				ng-model="formData.NCONTRACT_SALE[0].BUSINESSUNIT.val" />
+		</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				签约公司 </span> <input type="text" class="custom-input"
+				ng-model="formData.NCONTRACT_SALE[0].COMPANY.val" />
+		</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				是否标准合同 </span> <input type="text" class="custom-input"
+				ng-model="formData.NCONTRACT_SALE[0].STANDARD_CONTRACT.val" />
+		</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				盖章情况 </span> <input type="text" class="custom-input"
+				ng-model="formData.NCONTRACT_SALE[0].STAMP.val" />
+		</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				合同主键 </span> <input type="text" class="custom-input"
+				ng-model="formData.NCONTRACT_SALE[0].SALE_ID.val" />
+		</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				终签领导 </span> <input type="text" class="custom-input"
+				ng-model="formData.NCONTRACT_SALE[0].LEADERSHIP.val" />
+		</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				终签领导编号 </span> <input type="text" class="custom-input"
+				ng-model="formData.NCONTRACT_SALE[0].LEADERSHIP_CODE.val" />
+		</div>
+		      </div>
+    </div>
+    <div class="detail-list">
+
+      <div class="detail-list-bg">
+              <div class="detail-title" ng-click="showOrHideDetail('detail-NCONTRACT_SALE_DETAIL',$event)">
+          	NCONTRACT_SALE_DETAIL
+          <i class="ion-plus detail-title-ion"></i>
+        </div>
+        <div style="display: none" class="detail-info" id="detail-NCONTRACT_SALE_DETAIL">
+          <div class="list">
+                        <div class="item item-input custom-item-input">
+                            <span class="list-index">{{$index+1}}</span>
+                            <span class="input-label custom-input-label ">主键</span>
+              <div class="custom-div" ng-bind="detail.SALE_DETAIL_ID.val"></div>
+            </div>
+                        <div class="item item-input custom-item-input">
+                            <span class="input-label custom-input-label ">合同类型</span>
+              <div class="custom-div" ng-bind="detail.CONTRACT_TYPE.val"></div>
+            </div>
+                        <div class="item item-input custom-item-input">
+                            <span class="input-label custom-input-label ">关联合同编号</span>
+              <div class="custom-div" ng-bind="detail.RELATION_CONTRACT_ID.val"></div>
+            </div>
+                        <div class="item item-input custom-item-input">
+                            <span class="input-label custom-input-label ">资源核实号</span>
+              <div class="custom-div" ng-bind="detail.RESOURCE_VERIFY_ID.val"></div>
+            </div>
+                        <div class="item item-input custom-item-input">
+                            <span class="input-label custom-input-label ">采购签报号</span>
+              <div class="custom-div" ng-bind="detail.PROCURE_SIGN_ID.val"></div>
+            </div>
+                        <div class="item item-input custom-item-input">
+                            <span class="input-label custom-input-label ">商机号</span>
+              <div class="custom-div" ng-bind="detail.PIPELINE.val"></div>
+            </div>
+                        <div class="item item-input custom-item-input">
+                            <span class="input-label custom-input-label ">附件</span>
+              <div class="custom-div" ng-bind="detail.ATTACHMENT.val"></div>
+            </div>
+                      </div>
+        </div>
+            </div>
+    </div>
+  </ion-content>
+</ion-modal-view>

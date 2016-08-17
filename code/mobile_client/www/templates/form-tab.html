@@ -1,0 +1,12 @@
+<div class="custom-scroll">
+  <ion-scroll delegate-handle="formTabScroll" direction="x">
+    <div class="custom-tab" id="form-tab" style="width: {{formTabWidth}}px">
+      <div ng-repeat="tab in formTabs" id="tab_{{tab.pageId}}"
+           class="custom-nav form-tab-nav {{$index == 0 ? 'active' : ''}} "
+           ng-click="changeFormTab($index)">
+        {{tab.tabName}}
+      </div>
+      <div style="clear: both"></div>
+    </div>
+  </ion-scroll>
+</div>

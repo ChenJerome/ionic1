@@ -1,0 +1,207 @@
+<ion-modal-view align="center" ng-controller="formCtrl">
+	<ion-header-bar class="bar-positive" align-title="center">
+		<div ng-include="'templates/form-head.html'"></div>
+		<div class="title">出差申请{{formData.OA_TRAVEL_APPLICATION[0].APPLICATION_ID.val}}</div>
+	</ion-header-bar>
+	<ion-content delegate-handle="formMainScroll">
+		<div ng-include="'templates/form-tab.html'"></div>
+		<div id="OA_TRAVEL_APPLICATION">
+			<div class="list">
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				发起人 </span>
+					<div class="custom-div"
+						 ng-bind="formData.OA_TRAVEL_APPLICATION[0].CREATEUSER.val"></div>
+				</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				发起日期 </span>
+					<div class="custom-div"
+						 ng-bind="formData.OA_TRAVEL_APPLICATION[0].CREATEDATE.val"></div>
+				</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				出差人 </span>
+					<div class="custom-div"
+						 ng-bind="formData.OA_TRAVEL_APPLICATION[0].TRAVEL_USER.val"></div>
+				</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				出差人所属公司 </span>
+					<div class="custom-div"
+						 ng-bind="formData.OA_TRAVEL_APPLICATION[0].COMPANY.val"></div>
+				</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				出差人所属部门 </span>
+					<div class="custom-div"
+						 ng-bind="formData.OA_TRAVEL_APPLICATION[0].TRAVEL_USER_DEP.val"></div>
+				</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				差旅类型</span>
+					<div class="custom-div"
+						 ng-bind="formData.OA_TRAVEL_APPLICATION[0].TRAVLE_TYPE_FOR_SUBSIDY.dis"></div>
+				</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				费用所属公司</span>
+					<div class="custom-div"
+						 ng-bind="formData.OA_TRAVEL_APPLICATION[0].FEE_COMPANY.val"></div>
+				</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				费用所属成本中心</span>
+					<div class="custom-div"
+						 ng-bind="formData.OA_TRAVEL_APPLICATION[0].COST_CENTER.val"></div>
+				</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				费用所属部门/项目</span>
+					<div class="custom-div">
+						<span ng-bind="formData.OA_TRAVEL_APPLICATION[0].FEE_TYPE.dis"></span>
+						<span ng-bind="formData.OA_TRAVEL_APPLICATION[0].FEE_PROJ.val"></span>
+						<span ng-bind="formData.OA_TRAVEL_APPLICATION[0].FEE_DEP.val"></span>
+					</div>
+				</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				补提流程 </span>
+					<div class="custom-div"
+						 ng-bind="formData.OA_TRAVEL_APPLICATION[0].IS_SUBMIT_SUPPLEMENT.dis"></div>
+				</div>
+				<div class="item item-input custom-item-input" >
+			  <span class="input-label custom-input-label ">
+				订单状态</span>
+					<div class="custom-select"   >
+						<select class="" id="ddztselect" ng-model="formData.OA_TRAVEL_APPLICATION[0].APPLICATION_STATUS.val" >
+							<option value="" >--请选择--</option>
+							<!--<option value="{{lx.CATEGORY_VALUE}}" ng-repeat="lx in HTLX">{{lx.DISPLAY}}</option>-->
+							<option value="{{lx.CATEGORY_VALUE}}"
+									ng-if="formData.OA_TRAVEL_APPLICATION[0].APPLICATION_STATUS.val.indexOf(lx.CATEGORY_VALUE) >= 0" selected
+									ng-repeat="lx in CL">{{lx.DISPLAY}}
+							</option>
+							<option value="{{lx.CATEGORY_VALUE}}"
+									ng-if="formData.OA_TRAVEL_APPLICATION[0].APPLICATION_STATUS.val.indexOf(lx.CATEGORY_VALUE) < 0"
+									ng-repeat="lx in CL">{{lx.DISPLAY}}
+							</option>
+						</select>
+					</div>
+					<i class="ion-ios-arrow-down" ></i>
+				</div>
+				<div class="item item-input custom-item-input">
+			  <span class="input-label custom-input-label ">实际开始日期<FONT
+					  color=#ff0000>*</FONT></span>
+					<input id="REAL_START_DATE" type="text" mobiscroll-date  ng-change="countdays()"
+						   ng-model="formData.OA_TRAVEL_APPLICATION[0].REAL_START_DATE.val"/>
+					<i class="ion-calendar"></i>
+				</div>
+				<div class="item item-input custom-item-input">
+			  <span class="input-label custom-input-label ">实际结束日期<FONT
+					  color=#ff0000>*</FONT></span>
+					<input id="REAL_END_DATE" type="text" mobiscroll-date  ng-change="countdays()"
+						   ng-model="formData.OA_TRAVEL_APPLICATION[0].REAL_END_DATE.val"/>
+					<i class="ion-calendar"></i>
+				</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				实际出差天数 </span>
+					<div class="custom-div"
+						 ng-bind="formData.OA_TRAVEL_APPLICATION[0].TRAVEL_DAYS.val"></div>
+				</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				预计出差天数 </span>
+					<div class="custom-div"
+						 ng-bind="formData.OA_TRAVEL_APPLICATION[0].EXPECTED_TRAVEL_DAYS.val"></div>
+				</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				备注 </span>
+					<div class="custom-div"
+						 ng-bind="formData.OA_TRAVEL_APPLICATION[0].REMARKS.val"></div>
+				</div>
+
+			</div>
+		</div>
+		<div ng-include="'templates/proc-list.html'"></div>
+		<div class="detail-list">
+			<div class="detail-list-bg">
+
+				<div class="detail-title" ng-click="showOrHideDetail('detail-OA_TRAVEL_APPLICATION_DETAIL',$event)">
+					行程
+					<i class="ion-plus detail-title-ion"></i>
+				</div>
+				<div style="display: none" class="detail-info" id="detail-OA_TRAVEL_APPLICATION_DETAIL">
+					<div class="list"  ng-repeat="detail in formData.OA_TRAVEL_APPLICATION_DETAIL">
+						<div class="item item-input custom-item-input">
+							<span class="list-index">{{$index+1}}</span>
+							<span class="input-label custom-input-label ">行程</span>
+							<div class="custom-div" ng-bind="detail.GO_BACK_TYPE.dis"></div>
+						</div>
+						<div class="item item-input custom-item-input">
+							<span class="input-label custom-input-label ">行程号</span>
+							<div class="custom-div" ng-bind="detail.APPLICATION_DETAILID.val"></div>
+						</div>
+						<div class="item item-input custom-item-input">
+							<span class="input-label custom-input-label ">订票类型</span>
+							<div class="custom-div" ng-bind="detail.TRAVEL_TYPE.dis"></div>
+						</div>
+						<div class="item item-input custom-item-input">
+							<span class="input-label custom-input-label ">开始时间</span>
+							<div class="custom-div" ng-bind="detail.START_DATE.val"></div>
+						</div>
+						<div class="item item-input custom-item-input">
+							<span class="input-label custom-input-label ">出发城市</span>
+							<div class="custom-div" ng-bind="detail.START_CITY.val"></div>
+						</div>
+						<div class="item item-input custom-item-input">
+							<span class="input-label custom-input-label ">到达城市</span>
+							<div class="custom-div" ng-bind="detail.END_CITY.val"></div>
+						</div>
+						<div class="item item-input custom-item-input">
+							<span class="input-label custom-input-label ">交通工具</span>
+							<div class="custom-div" ng-bind="detail.TRAVEL_TOOL.dis"></div>
+						</div>
+						<div class="item item-input custom-item-input">
+							<span class="input-label custom-input-label ">是否住宿</span>
+							<div class="custom-div" ng-bind="detail.ISSTAY.dis"></div>
+						</div>
+						<div class="item item-input custom-item-input">
+							<span class="input-label custom-input-label ">住宿地址</span>
+							<div class="custom-div" ng-bind="detail.HOTEL_ADDRESS.val"></div>
+						</div>
+						<div class="item item-input custom-item-input">
+							<span class="input-label custom-input-label ">是否订协议酒店</span>
+							<div class="custom-div" ng-bind="detail.IS_AGREEMENT_HOTEL.dis"></div>
+						</div>
+						<div class="item item-input custom-item-input">
+							<span class="input-label custom-input-label ">协议酒店</span>
+							<div class="custom-div" ng-bind="detail.AGREEMENT_HOTEL.val"></div>
+						</div>
+						<div class="item item-input custom-item-input">
+							<span class="input-label custom-input-label ">随同人员</span>
+							<div class="custom-div" ng-bind="detail.WITH_PEOPLE.val"></div>
+						</div>
+						<div class="item item-input custom-item-input">
+							<span class="input-label custom-input-label ">具体事由</span>
+							<div class="custom-div" ng-bind="detail.REASON.val"></div>
+						</div>
+						<div class="item item-input custom-item-input">
+						<span class="input-label custom-input-label ">备注</span>
+						<div class="custom-div" ng-bind="detail.REMARK.val"></div>
+					</div>
+						<div class="item item-input custom-item-input">
+							<span class="input-label custom-input-label ">订机票</span>
+							<button class="custom-button" ng-click="loginCtrip('FlightSearch','{{detail.APPLICATION_DETAILID.val}}{{formData.OA_TRAVEL_APPLICATION[0].APPLICATION_ID.val}}')" ng-if="detail.TRAVEL_TOOL.val=='2'" >携程预订机票</button>
+						</div>
+						<div class="item item-input custom-item-input">
+							<span class="input-label custom-input-label ">订酒店</span>
+							<button class="custom-button" ng-click="loginCtrip('HotelSearch','{{detail.APPLICATION_DETAILID.val}}{{formData.OA_TRAVEL_APPLICATION[0].APPLICATION_ID.val}}')" ng-if="detail.ISSTAY.val=='1'">携程预订酒店</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</ion-content>
+</ion-modal-view>

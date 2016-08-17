@@ -1,0 +1,37 @@
+<ion-view view-title="设置">
+  <ion-content class="content-setting">
+    <div class="setting">
+      <!--推送设置-->
+      <div class="push-setting">
+        <ion-toggle  ng-model="pushSet.enablePush" ng-click="enablePush()">
+          推送设置
+        </ion-toggle>
+        <div class="push-info">开启后,在设定时间段内不接收服务器推送的消息</div>
+        <div id = "time-setting" style="display:none">
+          <div class="time-setting" ng-click="showTime('startTime')">
+            <span>开始时间</span>
+            <span class="time" id="startTimeText"></span>
+            <input id="startTime" ng-model="pushSet.startTime">
+          </div>
+          <div class="time-setting" ng-click="showTime('endTime')">
+            <span>结束时间</span>
+            <span class="time" id="endTimeText"></span>
+            <input id="endTime" ng-model="pushSet.endTime">
+          </div>
+        </div>
+      </div>
+
+      <div class="exist">
+        <div ng-click="goSettingPwd()">
+          锁屏密码设置
+        </div>
+        <div ng-click="logOut()">
+          退出当前帐号
+        </div>
+        <div>
+          关于
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

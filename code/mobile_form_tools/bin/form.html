@@ -1,0 +1,18 @@
+<ion-modal-view align="center" ng-controller="formCtrl">
+<ion-header-bar class="bar-positive" align-title="center">
+<h1 class="title">测试申请单</h1>
+<a class="button" ng-click="closeModal();">关闭</a> <a class="button"
+	ng-click="showActionSheet();">操作</a> </ion-header-bar> <ion-content>
+<div>
+	<div class="list">
+
+		#foreach($mfield in ${mForm.masterObj.getFieldList()})
+		<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				${mfield.fieldName} </span> <input type="text" class="custom-input"
+				ng-model="formData.${mfield.bizObj}[0].${mfield.field}.val" />
+		</div>
+		#end
+	</div>
+</div>
+</ion-content> </ion-modal-view>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+  <script src="../../lib/ionic/js/ionic.bundle.js"></script>
+  <script src="../../cordova.js"></script>
+  <script src="../../js/jquery.js"></script>
+  <script src="../../js/ng-cordova.min.js"></script>
+  <script src="../../js/barcodescanner.js"></script>
+</head>
+<body>
+
+<div ng-app="barcodeScanner" ng-controller="scannerCtrl">
+  <button value="scan" ng-click="scan();" />
+</div>
+
+<script type="text/javascript">
+  var angularObj = angular.module("barcodeScanner",['ionic','ngCordova']);
+  angularObj.controller("scannerCtrl",function($scope,$cordovaBarcodeScanner){
+  //alert("123123123");
+  console.log($cordovaBarcodeScanner);
+    //扫描条码方法
+    $scope.scan = function(){
+
+       /* cordova.plugins.barcodeScanner.scan(function(result){
+          console.log(result);
+        },function(error){
+          alert("扫描失败："+error);
+        })*/
+    };
+  });
+
+</script>
+</body>
+</html>

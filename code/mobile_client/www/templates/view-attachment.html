@@ -1,0 +1,17 @@
+<!-- 查看附件 -->
+
+<ion-modal-view align="center" class="view-attachment">
+  <ion-header-bar class="bar-positive" align-title="center">
+    <h1 class="title">附件浏览</h1>
+    <a class="button ion-close" ng-click="closeViewAttachment();"></a>
+
+  </ion-header-bar>
+  <ion-content>
+    <div ng-if="dealImg">正在处理附件请稍后。</div>
+    <div>
+      <img style="width: 100%;height: auto" ng-repeat="img in convertImgs" ng-src="{{_r_server + img}}" >
+    </div>
+    <ion-list></ion-list>
+  </ion-content>
+</ion-modal-view>
+

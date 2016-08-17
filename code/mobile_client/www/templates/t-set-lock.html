@@ -1,0 +1,20 @@
+<!--弹出设置密码的模版-->
+<div>
+  <ion-content class="lock-content">
+    <div class="lock-title">
+      锁屏密码设置
+    </div>
+    <div class="lock-pwd">
+      <div class="lock-info">
+        <span ng-bind="lockInfo"></span>
+      </div>
+      <div>
+        <input type="password" id="lockPassword" ng-model="lock.lockPwd" maxlength="4" onkeyup="this.value=this.value.replace(/[^0-9-]+/,'');" onblur="this.value=this.value.replace(/[^0-9-]+/,'');">
+      </div>
+      <div class="lock-bt">
+        <a ng-click="closePo()" ng-if="isSetLockPwd">取消</a>
+        <a ng-click="nextG()">{{nextGName}}</a>
+      </div>
+    </div>
+  </ion-content>
+</div>

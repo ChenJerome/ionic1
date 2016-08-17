@@ -1,0 +1,13 @@
+.error {
+	color: red;
+}
+
+.webuploader-container {
+  padding: 0px;
+  border-color: #2980b9;
+  background-color: #03a9f4;
+}
+
+.label-ctrl {
+	padding-top: 8px;
+}

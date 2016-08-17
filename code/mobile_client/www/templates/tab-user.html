@@ -1,0 +1,45 @@
+<ion-view view-title="员工查询">
+  <ion-nav-title>员工查询({{pageInfo.allCount}})</ion-nav-title>
+  <ion-content ng-init="initUser()" on-drag-down="alert(1)">
+    <ion-refresher pulling-text="刷新人员列表" on-refresh="refreshUser();"></ion-refresher>
+    <ion-list>
+      <form>
+        <div class="bar item-input-inset">
+          <label class="item-input-wrapper">
+            <i class="icon ion-ios-search placeholder-icon"></i>
+            <input type="search" placeholder="姓名、拼音、员工号" ng-keyup="keyUp($event)" ng-model="search.userSearchText">
+          </label>
+          <span class="span-search">
+            <i ng-if="search.userSearchText != ''" ng-click="clearSearch()" class="icon ion-ios-close"></i>
+          </span>
+          <!--<button class="button button-clear" ng-click="queryUser()">查询</button>-->
+        </div>
+      </form>
+      <ion-item ng-repeat="user in userList" >
+        <div class="custom-u-div-f">
+          <div>
+            <span ng-bind="$index+1" class="index"></span>
+            <span ng-bind="user.name"></span>
+            <span ng-bind="user.id" ></span>
+            <span ng-bind="user.sex" class="sex"></span>
+            <span ng-bind="user.title" class="user-id"></span>
+          </div>
+        </div>
+        <div class="custom-u-div">
+          <span ng-repeat="tele in user.teleDisplays" ng-bind="tele" class="user-tel" ng-click="telPhone('{{tele}}')"></span>
+        </div>
+        <div class="custom-u-div">
+          <span ng-bind="user.email" class="user-tel" ng-click="mailTo('{{user.email}}')"></span>
+        </div>
+        <div class="custom-u-div">
+          <div ng-bind="user.departName" class="user-id"></div>
+        </div>
+      </ion-item>
+    </ion-list>
+    <ion-infinite-scroll
+      icon="ion-loading-d"
+      on-infinite="loadMoreUser();"
+      distance="1%">
+    </ion-infinite-scroll>
+  </ion-content>
+</ion-view>

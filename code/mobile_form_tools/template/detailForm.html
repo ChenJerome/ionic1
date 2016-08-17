@@ -1,0 +1,48 @@
+<ion-modal-view align="center" ng-controller="formCtrl">
+  <ion-header-bar class="bar-positive" align-title="center">
+    <div ng-include="'templates/form-head.html'"></div>
+    <div class="title">${mForm.funcName}</div>
+  </ion-header-bar>
+  <ion-content delegate-handle="formMainScroll">
+
+    <div>
+      <div class="list">
+     	#foreach($mfield in ${mForm.masterObj.getFieldList()})
+		<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				${mfield.fieldName} </span>
+				<div class="custom-div" 
+					#if(${mfield.properties.get("style")})
+						style="DISPLAY:${mfield.properties.get("style").get("DISPLAY")}"
+					#end
+				 ng-bind="formData.${mfield.bizObj}[0].${mfield.field}.val"></div>
+		</div>
+		#end
+      </div>
+    </div>
+    <div class="detail-list">
+	#foreach($bizObj in ${mForm.relatedObj})
+      <div class="detail-list-bg">
+      
+        <div class="detail-title" ng-click="showOrHideDetail('detail-${bizObj.objName}',$event)">
+          	${bizObj.objName}
+          <i class="ion-plus detail-title-ion"></i>
+        </div>
+        <div style="display: none" class="detail-info" id="detail-${bizObj.objName}">
+          <div class="list"  ng-repeat="detail in formData.${bizObj.objName}">
+            #foreach($mfield in ${bizObj.getFieldList()})
+            <div class="item item-input custom-item-input">
+              #if($velocityCount == 1)
+              <span class="list-index">{{$index+1}}</span>
+              #end
+              <span class="input-label custom-input-label ">${mfield.fieldName}</span>
+              <div class="custom-div" ng-bind="detail.${mfield.field}.val"></div>
+            </div>
+            #end
+          </div>
+        </div>
+      </div>
+      #end
+    </div>
+  </ion-content>
+</ion-modal-view>

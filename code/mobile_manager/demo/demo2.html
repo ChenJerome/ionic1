@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<head>
+<title>Demo</title>
+<script type="text/javascript" src="../js/jquery/jquery.js"></script>
+<script type="text/javascript">
+	$(function() {
+		
+	});
+</script>
+</head>
+<body>
+<form action="/demo/adBasicDataAction/insert" method="post" enctype="multipart/form-data">
+	<input type="file" name="file" id="file">
+	<input type="submit" value="上传" id="upload">
+	
+</form>
+<form action="/demo/adBasicDataAction/downloadExcel" method="post">
+	<input type="text" name="month" value="2015-11">
+	<input type="submit" value="下载" id="download">
+</form>
+</body>
+</html>

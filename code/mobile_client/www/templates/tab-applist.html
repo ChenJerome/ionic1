@@ -1,0 +1,39 @@
+<!-- 系统应用的界面 -->
+<ion-view view-title="">
+  <ion-content class="padding app-list">
+    <!--<div class="my-photo">-->
+      <!--<img src="img/ben.png">-->
+    <!--</div>-->
+    <div class="row user-info">
+      <div class="col col-40" style="text-align: right;">
+        <div class="user-name">
+          <span ng-bind="userName"></span>
+        </div>
+        <div class="job-name">
+          <span ng-bind="jobName"></span>
+        </div>
+      </div>
+      <div class="col col-20" style="text-align: center;">
+        <div class="middle-line">&nbsp;</div>
+      </div>
+      <div class="col col-40">
+        <div class="to-task">
+          <span ng-bind="pageInfo.allCount"></span>
+          <span class="badge task">待办</span>
+        </div>
+      </div>
+    </div>
+    <div class="row" ng-repeat="menu in menuList">
+      <div class="col col-33 icon-app" ng-repeat="m in menu">
+        <a  ng-click="menuClick(m)">
+          <div class="m-img">
+            <img src="img/applist/{{m.menuIcon}}">
+          </div>
+        </a>
+        <h4>{{m.menuText}}</h4>
+      </div>
+
+    </div>
+  </ion-content>
+</ion-view>
+

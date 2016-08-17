@@ -1,0 +1,40 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "com.ionicframework.mobileapp544764"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.ionicframework.mobileapp544764"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "com.ionicframework.mobileapp544764"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "com.ionicframework.mobileapp544764"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.ionicframework.mobileapp544764"
+        },
+        "ionic-plugin-keyboard": {
+            "PACKAGE_NAME": "com.ionicframework.mobileapp544764"
+        },
+        "cn.jpush.phonegap.JPushPlugin": {
+            "API_KEY": "665fffc0d7342501f9fd4c35",
+            "PACKAGE_NAME": "com.purvar.mobileapp"
+        },
+        "cordova-sqlite-storage": {
+            "PACKAGE_NAME": "com.purvar.mobileapp"
+        },
+        "phonegap-plugin-barcodescanner": {
+            "PACKAGE_NAME": "com.purvar.mobileapp"
+        }
+    },
+    "dependent_plugins": {}
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>定位</title>
+  <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=v4MpKBsP0niQGYyT1WLKzUEh"></script>
+</head>
+<body>
+<div id="bMap"></div>
+</body>
+<script type="text/javascript">
+  var map  = new BMap.Map("bMap");
+  var geolocation = new BMap.Geolocation();
+  var geoc = new BMap.Geocoder();
+  geolocation.getCurrentPosition(function(r) {
+    if (this.getStatus() == BMAP_STATUS_SUCCESS) {
+      var mk = new BMap.Marker(r.point);
+      map.addOverlay(mk);
+      map.panTo(r.point);
+      alert('您的位置：' + r.point.lng + ',' + r.point.lat);
+      //通过point获取到地点的值
+      geoc.getLocation(r.point,function(rs){
+        //console.log(rs);
+        alert(rs.address);
+      });
+    } else {
+      alert('failed' + this.getStatus());
+    }
+  }, {
+    enableHighAccuracy: true
+  })
+</script>
+</html>

@@ -1,0 +1,278 @@
+<ion-modal-view align="center" ng-controller="formCtrl">
+  <ion-header-bar class="bar-positive" align-title="center">
+    <div ng-include="'templates/form-head.html'"></div>
+    <div class="title">测试单申请</div>
+  </ion-header-bar>
+  <ion-content delegate-handle="formMainScroll">
+
+    <div>
+      <div class="list">
+     			<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				填写人 </span>
+				<div class="custom-div" ng-bind="formData.PROCUREMENT_PROCURESIGN[0].FILLNAME.val"></div>
+		</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				发起时间 </span>
+				<div class="custom-div" ng-bind="formData.PROCUREMENT_PROCURESIGN[0].FILLDATE.val"></div>
+		</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				发起人编号 </span>
+				<div class="custom-div" ng-bind="formData.PROCUREMENT_PROCURESIGN[0].FILLNAME_CODE.val"></div>
+		</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				申请人编号 </span>
+				<div class="custom-div" ng-bind="formData.PROCUREMENT_PROCURESIGN[0].APPLICANT_CODE.val"></div>
+		</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				申请人部门编号 </span>
+				<div class="custom-div" ng-bind="formData.PROCUREMENT_PROCURESIGN[0].DEP_CODE2.val"></div>
+		</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				申请人部门 </span>
+				<div class="custom-div" ng-bind="formData.PROCUREMENT_PROCURESIGN[0].DEP_NAME2.val"></div>
+		</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				用途 </span>
+				<div class="custom-div" ng-bind="formData.PROCUREMENT_PROCURESIGN[0].USE.val"></div>
+		</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				备注 </span>
+				<div class="custom-div" ng-bind="formData.PROCUREMENT_PROCURESIGN[0].REMARKS.val"></div>
+		</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				机房编号 </span>
+				<div class="custom-div" ng-bind="formData.PROCUREMENT_PROCURESIGN[0].GENERATOR_ROOM_CODE.val"></div>
+		</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				申请人 </span>
+				<div class="custom-div" ng-bind="formData.PROCUREMENT_PROCURESIGN[0].APPLICANT.val"></div>
+		</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				业务单元 </span>
+				<div class="custom-div" ng-bind="formData.PROCUREMENT_PROCURESIGN[0].BUSINESSUNIT.val"></div>
+		</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				标题 </span>
+				<div class="custom-div" ng-bind="formData.PROCUREMENT_PROCURESIGN[0].PROCUREMENT_TITLE.val"></div>
+		</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				资源点情况 </span>
+				<div class="custom-div" ng-bind="formData.PROCUREMENT_PROCURESIGN[0].RESOUCE.val"></div>
+		</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				机房名称 </span>
+				<div class="custom-div" ng-bind="formData.PROCUREMENT_PROCURESIGN[0].GENERATOR_ROOM.val"></div>
+		</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				交付时间要求 </span>
+				<div class="custom-div" ng-bind="formData.PROCUREMENT_PROCURESIGN[0].DELIVERY.val"></div>
+		</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				附件 </span>
+				<div class="custom-div" ng-bind="formData.PROCUREMENT_PROCURESIGN[0].ATTACHMENT.val"></div>
+		</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				公司现有机柜资源情况 </span>
+				<div class="custom-div" ng-bind="formData.PROCUREMENT_PROCURESIGN[0].CABINET_RESOURCE.val"></div>
+		</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				责任人 </span>
+				<div class="custom-div" ng-bind="formData.PROCUREMENT_PROCURESIGN[0].RESP_PERSON.val"></div>
+		</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				市场资源情况 </span>
+				<div class="custom-div" ng-bind="formData.PROCUREMENT_PROCURESIGN[0].MARKET_RESOURCE.val"></div>
+		</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				费用所属部门 </span>
+				<div class="custom-div" ng-bind="formData.PROCUREMENT_PROCURESIGN[0].COST_DEPARTMENT.val"></div>
+		</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				费用所属基金中心 </span>
+				<div class="custom-div" ng-bind="formData.PROCUREMENT_PROCURESIGN[0].FUND_CENTER.val"></div>
+		</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				公司现有网络资源情况 </span>
+				<div class="custom-div" ng-bind="formData.PROCUREMENT_PROCURESIGN[0].NET_RESOURCE.val"></div>
+		</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				机柜资源确认人 </span>
+				<div class="custom-div" ng-bind="formData.PROCUREMENT_PROCURESIGN[0].COMPANYRESOURCE.val"></div>
+		</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				网络资源确认人 </span>
+				<div class="custom-div" ng-bind="formData.PROCUREMENT_PROCURESIGN[0].NETRESOURCE.val"></div>
+		</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				主键 </span>
+				<div class="custom-div" ng-bind="formData.PROCUREMENT_PROCURESIGN[0].PROCUREMENT_SIGN_ID.val"></div>
+		</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				预算承诺项目 </span>
+				<div class="custom-div" ng-bind="formData.PROCUREMENT_PROCURESIGN[0].COMMITMENT_PROJECT_ID.val"></div>
+		</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				承诺项目剩余金额 </span>
+				<div class="custom-div" ng-bind="formData.PROCUREMENT_PROCURESIGN[0].COMMITMENT_TOTAL.val"></div>
+		</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				责任人编号 </span>
+				<div class="custom-div" ng-bind="formData.PROCUREMENT_PROCURESIGN[0].RESP_PERSON_CODE.val"></div>
+		</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				资源核实号 </span>
+				<div class="custom-div" ng-bind="formData.PROCUREMENT_PROCURESIGN[0].RESOURCE_VERIFY_ID.val"></div>
+		</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				费用总计 </span>
+				<div class="custom-div" ng-bind="formData.PROCUREMENT_PROCURESIGN[0].COST_SUM.val"></div>
+		</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				采购责任人部门全称 </span>
+				<div class="custom-div" ng-bind="formData.PROCUREMENT_PROCURESIGN[0].FULLNAME.val"></div>
+		</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				采购责任人部门编号 </span>
+				<div class="custom-div" ng-bind="formData.PROCUREMENT_PROCURESIGN[0].DEP_CODE.val"></div>
+		</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				产出线 </span>
+				<div class="custom-div" ng-bind="formData.PROCUREMENT_PROCURESIGN[0].PRODUCTLINE.val"></div>
+		</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				使用范围 </span>
+				<div class="custom-div" ng-bind="formData.PROCUREMENT_PROCURESIGN[0].SCOPE.val"></div>
+		</div>
+				<div class="item item-input custom-item-input">
+			<span class="input-label custom-input-label ">
+				销售备案号 </span>
+				<div class="custom-div" ng-bind="formData.PROCUREMENT_PROCURESIGN[0].SALE_RECORD.val"></div>
+		</div>
+		      </div>
+    </div>
+    <div class="detail-list">
+	      <div class="detail-list-bg">
+      
+        <div class="detail-title" ng-click="showOrHideDetail('detail-PROCUREMENT_NETSIGN',$event)">
+          	PROCUREMENT_NETSIGN
+          <i class="ion-plus detail-title-ion"></i>
+        </div>
+        <div style="display: none" class="detail-info" id="detail-PROCUREMENT_NETSIGN">
+          <div class="list"  ng-repeat="detail in formData.PROCUREMENT_NETSIGN">
+                        <div class="item item-input custom-item-input">
+                            <span class="list-index">{{$index+1}}</span>
+                            <span class="input-label custom-input-label ">序号</span>
+              <div class="custom-div" ng-bind="detail.NETSIGN_ID.val"></div>
+            </div>
+                        <div class="item item-input custom-item-input">
+                            <span class="input-label custom-input-label ">类型</span>
+              <div class="custom-div" ng-bind="detail.NETSIGN_TYPE.val"></div>
+            </div>
+                        <div class="item item-input custom-item-input">
+                            <span class="input-label custom-input-label ">数量</span>
+              <div class="custom-div" ng-bind="detail.COUNT1.val"></div>
+            </div>
+                        <div class="item item-input custom-item-input">
+                            <span class="input-label custom-input-label ">单位</span>
+              <div class="custom-div" ng-bind="detail.UNIT.val"></div>
+            </div>
+                        <div class="item item-input custom-item-input">
+                            <span class="input-label custom-input-label ">运营商</span>
+              <div class="custom-div" ng-bind="detail.SUPPLY.val"></div>
+            </div>
+                        <div class="item item-input custom-item-input">
+                            <span class="input-label custom-input-label ">价格预估</span>
+              <div class="custom-div" ng-bind="detail.PRICE_FORECAST1.val"></div>
+            </div>
+                        <div class="item item-input custom-item-input">
+                            <span class="input-label custom-input-label ">月费用</span>
+              <div class="custom-div" ng-bind="detail.MONTH_CAST1.val"></div>
+            </div>
+                        <div class="item item-input custom-item-input">
+                            <span class="input-label custom-input-label ">单位</span>
+              <div class="custom-div" ng-bind="detail.UNIT.val"></div>
+            </div>
+                      </div>
+        </div>
+      </div>
+            <div class="detail-list-bg">
+      
+        <div class="detail-title" ng-click="showOrHideDetail('detail-PROCUREMENT_CABINETSIGN',$event)">
+          	PROCUREMENT_CABINETSIGN
+          <i class="ion-plus detail-title-ion"></i>
+        </div>
+        <div style="display: none" class="detail-info" id="detail-PROCUREMENT_CABINETSIGN">
+          <div class="list"  ng-repeat="detail in formData.PROCUREMENT_CABINETSIGN">
+                        <div class="item item-input custom-item-input">
+                            <span class="list-index">{{$index+1}}</span>
+                            <span class="input-label custom-input-label ">序号</span>
+              <div class="custom-div" ng-bind="detail.CABINET_ID.val"></div>
+            </div>
+                        <div class="item item-input custom-item-input">
+                            <span class="input-label custom-input-label ">类型</span>
+              <div class="custom-div" ng-bind="detail.CABINETSIGN_TYPE.val"></div>
+            </div>
+                        <div class="item item-input custom-item-input">
+                            <span class="input-label custom-input-label ">数量</span>
+              <div class="custom-div" ng-bind="detail.COUNT.val"></div>
+            </div>
+                        <div class="item item-input custom-item-input">
+                            <span class="input-label custom-input-label ">单位</span>
+              <div class="custom-div" ng-bind="detail.UNIT.val"></div>
+            </div>
+                        <div class="item item-input custom-item-input">
+                            <span class="input-label custom-input-label ">电力要求</span>
+              <div class="custom-div" ng-bind="detail.REQUIREMENT.val"></div>
+            </div>
+                        <div class="item item-input custom-item-input">
+                            <span class="input-label custom-input-label ">月费用</span>
+              <div class="custom-div" ng-bind="detail.MONTH_CAST.val"></div>
+            </div>
+                        <div class="item item-input custom-item-input">
+                            <span class="input-label custom-input-label ">价格预估</span>
+              <div class="custom-div" ng-bind="detail.PRICE_FORECAST.val"></div>
+            </div>
+                        <div class="item item-input custom-item-input">
+                            <span class="input-label custom-input-label ">单位</span>
+              <div class="custom-div" ng-bind="detail.UNIT.val"></div>
+            </div>
+                      </div>
+        </div>
+      </div>
+          </div>
+  </ion-content>
+</ion-modal-view>

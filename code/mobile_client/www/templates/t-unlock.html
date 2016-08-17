@@ -1,0 +1,88 @@
+<!--弹出密码解锁界面-->
+<div>
+  <ion-content class="unlock">
+    <div class="version">
+      <span ng-bind="version"></span>
+    </div>
+    <div id="gesturePwd">
+      <div class="unlock-n">
+        <div class="unlock-er">{{unlock.error}}</div>
+        <div class="unlock-po">
+          <i class="ion-record {{unlock.pwd1 ? 'active' :  ''}}"></i>
+          <i class="ion-record {{unlock.pwd2 ? 'active' :  ''}}"></i>
+          <i class="ion-record {{unlock.pwd3 ? 'active' :  ''}}"></i>
+          <i class="ion-record {{unlock.pwd4 ? 'active' :  ''}}"></i>
+        </div>
+        <div class="row">
+          <div class="col col-33 icon-app">
+            <div ng-click="touchNum(1)" class="unlock-num">1</div>
+          </div>
+          <div class="col col-33 icon-app">
+            <div ng-click="touchNum(2)" class="unlock-num">2</div>
+          </div>
+          <div class="col col-33 icon-app">
+            <div ng-click="touchNum(3)" class="unlock-num">3</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col col-33 icon-app">
+            <div ng-click="touchNum(4)" class="unlock-num">4</div>
+          </div>
+          <div class="col col-33 icon-app">
+            <div ng-click="touchNum(5)" class="unlock-num">5</div>
+          </div>
+          <div class="col col-33 icon-app">
+            <div ng-click="touchNum(6)" class="unlock-num">6</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col col-33 icon-app">
+            <div ng-click="touchNum(7)" class="unlock-num">7</div>
+          </div>
+          <div class="col col-33 icon-app">
+            <div ng-click="touchNum(8)" class="unlock-num">8</div>
+          </div>
+          <div class="col col-33 icon-app">
+            <div ng-click="touchNum(9)" class="unlock-num">9</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col col-33 icon-app">
+            <span></span>
+          </div>
+          <div class="col col-33 icon-app">
+            <div ng-click="touchNum(0)" class="unlock-num">0</div>
+          </div>
+          <div class="col col-33 icon-app">
+            <span></span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col col-33 icon-app">
+            <span ng-click="forgotPwd()">忘记密码</span>
+          </div>
+          <div class="col col-33 icon-app">
+            <div class="unlock-num"></div>
+          </div>
+          <div class="col col-33 icon-app">
+            <span ng-click="removeUnLockPwd()">删除</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="forgotPwd" style="display: none">
+      <div class="lock-pwd">
+        <div class="mis-info">
+          <span>请使用MIS密码进行解锁，解锁成功之后需要重新设置锁屏密码</span>
+        </div>
+        <div>
+          <input type="password" id="misPassword" >
+        </div>
+        <div class="lock-bt">
+          <a ng-click="goToGesPwd()">取消</a>
+          <a ng-click="misPwd()">确认</a>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</div>

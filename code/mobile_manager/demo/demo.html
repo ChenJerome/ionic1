@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<head>
+<title>Demo</title>
+<script type="text/javascript" src="../js/jquery/jquery.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("#add").click(function() {
+			$.ajax({
+    		   type: "POST",
+    		   url: "/demo/mvc//adBasicDataAction/add",
+    		   data: {
+    			   company : $("#company").val(),
+    			   month : $("#month").val()
+    		   },
+    		   dataType:'json',
+    		   success: function(data){
+    			   	console.log(data);
+    		   }
+    		});
+		});
+		
+		$("#update").click(function() {
+			$.ajax({
+    		   type: "POST",
+    		   url: "/demo/mvc//adBasicDataAction/update",
+    		   data: {
+    			   basicdataId : 1,
+    			   company : $("#company").val(),
+    			   month : $("#month").val()
+    		   },
+    		   dataType:'json',
+    		   success: function(data){
+    			   	console.log(data.record);
+    		   }
+    		});
+		});
+		
+		$("#delete").click(function() {
+			$.ajax({
+    		   type: "POST",
+    		   url: "/demo/mvc//adBasicDataAction/delete",
+    		   data: {
+    			   basicdataId : 1
+    		   },
+    		   dataType:'json',
+    		   success: function(data){
+    			   	console.log(data.record);
+    		   }
+    		});
+		});
+		
+		$("#selectOne").click(function() {
+			$.ajax({
+    		   type: "POST",
+    		   url: "/demo/mvc//adBasicDataAction/selectOne",
+    		   data: {
+    			   basicdataId : 2
+    		   },
+    		   dataType:'json',
+    		   success: function(data){
+    			   	console.log(data.record);
+    		   }
+    		});
+		});
+		
+		$("#selectMore").click(function() {
+			$.ajax({
+    		   type: "POST",
+    		   url: "/demo/mvc//adBasicDataAction/selectMore",
+    		   data: {
+    			   company : 2,
+    			   orderBy : 'BASICDATA_ID',
+    			   orderByType : 'desc',
+    			   curPage : 1,
+    			   pageSize :5
+    		   },
+    		   dataType:'json',
+    		   success: function(data){
+    			   	console.log(data.recordList);
+    		   }
+    		});
+		});
+	});
+</script>
+</head>
+<body>
+<form action="adBasicDataAction/add">
+	<input type="text" name="company" id="company">
+	<input type="text" name="month" id="month">
+	<input type="button" value="添加" id="add">
+	<input type="button" value="修改" id="update">
+	<input type="button" value="删除" id="delete">
+</form>
+<input type="button" value="查询单条记录" id="selectOne">
+<input type="button" value="查询多条记录" id="selectMore">
+</body>
+</html>

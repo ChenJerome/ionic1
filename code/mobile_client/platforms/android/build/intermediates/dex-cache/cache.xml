@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="E:\01_Work\01_Purvar\01_Produce\mobile-app\trunk\code\mobileapp\platforms\android\build\intermediates\exploded-aar\android\CordovaLib\unspecified\debug\classes.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="b86268c11d5e7b504e0ff17c25df0fed415a288b">
+        <dex dex="E:\01_Work\01_Purvar\01_Produce\mobile-app\trunk\code\mobileapp\platforms\android\build\intermediates\pre-dexed\debug\classes-a66505558b9077dfdc0b7c9cd5b62379967c398e.jar" />
+    </item>
+    <item
+        jar="E:\01_Work\01_Purvar\01_Produce\mobile-app\trunk\code\mobileapp\platforms\android\libs\com.google.zxing.client.android.captureactivity.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="daca75b7de34e1ca229682f2cd54b54e1c324be6">
+        <dex dex="E:\01_Work\01_Purvar\01_Produce\mobile-app\trunk\code\mobileapp\platforms\android\build\intermediates\pre-dexed\debug\com.google.zxing.client.android.captureactivity-63209b1d1828b466682d277136d230398302c8d6.jar" />
+    </item>
+    <item
+        jar="E:\01_Work\01_Purvar\01_Produce\mobile-app\trunk\code\mobileapp\platforms\android\libs\jpush-android-2.0.5.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="f2c821a0d13219a2e70490085c390bab03fb5953">
+        <dex dex="E:\01_Work\01_Purvar\01_Produce\mobile-app\trunk\code\mobileapp\platforms\android\build\intermediates\pre-dexed\debug\jpush-android-2.0.5-97279aac9690251a66e4d712691ed04b9e15c3ab.jar" />
+    </item>
+    <item
+        jar="E:\01_Work\01_Purvar\01_Produce\mobile-app\trunk\code\mobileapp\platforms\android\libs\sqlite-connector.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="3193260c427164169c8e7f97cfc2bdd7c8efa18d">
+        <dex dex="E:\01_Work\01_Purvar\01_Produce\mobile-app\trunk\code\mobileapp\platforms\android\build\intermediates\pre-dexed\debug\sqlite-connector-403806f681223b3e2ca750f5ad7314500fa46d01.jar" />
+    </item>
+
+</items>

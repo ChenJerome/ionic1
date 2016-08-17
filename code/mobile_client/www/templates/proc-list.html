@@ -1,0 +1,71 @@
+<!-- 流程处理过程 -->
+<!--<ion-modal-view align="center" ng-controller="procCtrl">-->
+  <!--<ion-header-bar class="bar-positive" align-title="center">-->
+    <!--<h1 class="title" ng-bind="wfName"></h1>-->
+    <!--<a class="button ion-close" ng-click="closeProc();"></a>-->
+
+  <!--</ion-header-bar>-->
+  <!--<ion-content>-->
+    <div class="process" id="processState">
+
+      <div class="proc_bg">
+        <!--<h3>-->
+          <!--<span id="clz">已完成</span>-->
+        <!--</h3>-->
+        <div class="list" ng-repeat="task in process.taskListEnd" ng-if="$index > 0">
+          <!--<div class="item item-input custom-item-input">
+            <span class="input-label custom-input-label ">
+              步骤名称:
+            </span>
+            <div class="custom-div" ng-bind="task.nodeName"></div>
+          </div>-->
+          <div class="item item-input custom-item-input">
+            <span class="input-label custom-input-label ">处理人:</span>
+            <div class="custom-div">
+              {{task.assignessName}} {{task.endTime}} {{task.commandMessage}}
+            </div>
+          </div>
+          <!--<div class="item item-input custom-item-input">
+            <span class="input-label custom-input-label ">到达时间</span>
+            <div class="custom-div" ng-bind="task.createTime"></div>
+          </div>-->
+          <!--<div class="item item-input custom-item-input">-->
+            <!--<span class="input-label custom-input-label ">完成时间</span>-->
+            <!--<div class="custom-div" ng-bind="task.endTime"></div>-->
+          <!--</div>-->
+          <!--<div class="item item-input custom-item-input">-->
+            <!--<span class="input-label custom-input-label ">处理结果</span>-->
+            <!--<div class="custom-div" ng-bind="task.commandMessage"></div>-->
+          <!--</div>-->
+          <div class="item item-input custom-item-input">
+            <span class="input-label custom-input-label ">意见:</span>
+            <div class="custom-div" ng-bind="task.taskComment"></div>
+          </div>
+        </div>
+      </div>
+      <div class="proc_bg" ng-if="process.taskListIng.length > 0">
+        <h3>
+          <span id="clz">处理中</span>
+        </h3>
+        <div class="list" ng-repeat="task in process.taskListIng">
+          <div class="item item-input custom-item-input">
+            <span class="input-label custom-input-label ">
+              步骤名称:
+            </span>
+            <div class="custom-div">
+              {{task.nodeName}}({{task.assignessName}})
+            </div>
+          </div>
+          <!--<div class="item item-input custom-item-input">-->
+          <!--<span class="input-label custom-input-label ">当前处理</span>-->
+          <!--<div class="custom-div" ng-bind="task.assignessName"></div>-->
+          <!--</div>-->
+          <div class="item item-input custom-item-input">
+            <span class="input-label custom-input-label ">到达时间:</span>
+            <div class="custom-div" ng-bind="task.createTime"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <!--</ion-content>-->
+<!--</ion-modal-view>-->

@@ -1,0 +1,18 @@
+<!--统一显示处理意见的窗口-->
+<div class="assgin-list-popup">
+  <div class="deal-message">
+    <div class="error-message" ng-if="m.message =='' && !m.first">
+      处理意见不能为空
+    </div>
+    <input type="text" placeholder="请输入处理意见" id="m.message" ng-model="m.message"/>
+    <div class="quick-info">
+      <span ng-if="commandType == 'general' || commandType == 'submit' || commandType == 'resolved'" ng-click="quickDealInfo('确认')">确认</span>
+      <span ng-if="commandType == 'general' || commandType == 'submit' || commandType == 'resolved'" ng-click="quickDealInfo('同意')">同意</span>
+      <span ng-if="commandType == 'general' || commandType == 'submit' || commandType == 'resolved'" ng-click="quickDealInfo('OK')">OK</span>
+      <span ng-if="commandType == 'general' || commandType == 'submit' || commandType == 'resolved'" ng-click="quickDealInfo('approve')">approve</span>
+      <span ng-if="commandType == 'rollBackTaskByTaskId'" ng-click="quickDealInfo('应要求驳回')">应要求驳回</span>
+      <span ng-if="commandType == 'pending'" ng-click="quickDealInfo('请确认')">请确认</span>
+      <span ng-if="commandType == 'pending'" ng-click="quickDealInfo('请给出意见')">请给出意见</span>
+    </div>
+  </div>
+</div>

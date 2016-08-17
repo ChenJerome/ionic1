@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<!-- 配置JMS连接工厂 -->
+	<bean id="consumerConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+		<property name="brokerURL" value="failover:(tcp://192.168.1.169:61616)" />
+		<property name="useAsyncSend" value="true" />
+		<property name="clientID" value="consumerClienctConnect" />
+	</bean>
+
+	<bean id="taskCreateDestination"  class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg value="taskCreate"/>
+    </bean>
+    
+	<!-- 配置消息消费监听者 -->
+	<bean id="consumerMessageListener" class="com.purvar.common.Listenner.ConsumerMessageListener" >
+	</bean>
+
+	<!-- 消息订阅客户端1 -->
+	<bean id="consumerListenerClient1"
+		class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+		<property name="connectionFactory" ref="consumerConnectionFactory" />
+		<!-- 开启订阅模式 -->
+		<property name="pubSubDomain" value="true" />
+		<property name="destination" ref="taskCreateDestination" />
+		<property name="subscriptionDurable" value="true" />
+		<!---这里是设置接收客户端的ID，在持久化时，但这个客户端不在线时，消息就存在数据库里，直到被这个ID的客户端消费掉 -->
+		<property name="clientId" value="consumerClient1" />
+		<property name="messageListener" ref="consumerMessageListener" />
+		<!-- 消息应答方式 Session.AUTO_ACKNOWLEDGE 消息自动签收 Session.CLIENT_ACKNOWLEDGE 
+			客户端调用acknowledge方法手动签收 Session.DUPS_OK_ACKNOWLEDGE 不必必须签收，消息可能会重复发送 -->
+		<property name="sessionAcknowledgeMode" value="1" />
+	</bean>
+
+
+</beans>

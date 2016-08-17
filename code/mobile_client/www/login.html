@@ -1,0 +1,29 @@
+<ion-view view-title="系统登陆" align="center">
+  <ion-nav-bar class="bar-stable login-bar" align-title="center">
+  </ion-nav-bar>
+  <ion-content class="login-content" ng-keyup="keyUp($event)">
+    <div class="login">
+      <div>
+        <span class="l-version" ng-bind="version"></span>
+        <img src="img/login/logo1.png">
+      </div>
+      <!--<h2>世纪互联移动审批</h2>-->
+      <form class="login-form">
+        <div class="in-div icon-user">
+          <input type="text" class="login-input ion-android-person" ng-model="user.loginId" placeholder="请输入您的用户名"
+                 id="txt_loginId" name="loginId">
+        </div>
+        <div class="in-div icon-pwd">
+          <input type="password" class="login-input login-pw" ng-model="user.password" placeholder="请输入您的密码"
+                 id="txt_loginPwd" name="loginPwd">
+        </div>
+
+        <ion-checkbox class="custom-checkbox" ng-click="autoLogin()" ng-model="isAutoLogin">自动登录</ion-checkbox>
+        <div class="login-button" ng-click="login()">
+          <a id="login-button" class="">立即登录</a>
+          <!--<input type="submit" ng-click="login()" value="立即登录">-->
+        </div>
+      </form>
+    </div>
+  </ion-content>
+</ion-view>

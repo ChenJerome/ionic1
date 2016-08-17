@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+  <script type="application/javascript" src="../../js/echarts.js"></script>
+</head>
+<body>
+
+<div id="echatsObj" style="height: 600px;">
+
+</div>
+
+<script type="text/javascript">
+  require.config({
+    paths: {
+      echarts: 'http://echarts.baidu.com/build/dist'
+    }
+  });
+  require(
+    [
+      'echarts',
+      'echarts/chart/pie'
+    ],
+    function (ec) {
+      var myChart = ec.init(document.getElementById('echatsObj'));
+      var option = {
+        title : {
+          text: '中午吃啥',
+          x:'center'
+        },
+        tooltip : {
+          trigger: 'item',
+          formatter: "{a} <br/>{b} : {c} ({d}%)"
+        },
+        legend: {
+          orient : 'vertical',
+          x : 'left',
+          data:['羊肉','鱼头','二楼','Big Master']
+        },
+        toolbox: {
+          show : true,
+          feature : {
+            restore : {show: true},
+          }
+        },
+        calculable : false,
+        series : [
+          {
+            name:'中午吃啥',
+            type:'pie',
+            radius : '55%',
+            center: ['50%', '60%'],
+            data:[
+              {value:4, name:'羊肉'},
+              {value:3, name:'鱼头'},
+              {value:2, name:'二楼'},
+              {value:1, name:'Big Master'}]
+          }
+        ]
+      };
+
+      myChart.setOption(option);
+    }
+  );
+</script>
+</body>
+</html>

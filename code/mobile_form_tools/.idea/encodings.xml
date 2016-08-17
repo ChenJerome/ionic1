@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/vianetMobile/www/forms/ContractInfo/CONTRACT_SALE/CSale_PriceCheckFormNew_config.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/vianetMobile/www/forms/ContractInfo/NCONTRACT_SALE/CSale_CheckFormNew_config.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/vianetMobile/www/forms/Daily_Office/DM_EMPLOYEE_REIMBURSEMENT/grbxsp_form_config.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/vianetMobile/www/forms/Daily_Office/DM_EMPLOYEE_REIMBURSEMENT/grbxsq_form2_config.js" charset="UTF-8" />
+  </component>
+</project>

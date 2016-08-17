@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:task="http://www.springframework.org/schema/task" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans   
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd   
+		http://www.springframework.org/schema/context   
+		http://www.springframework.org/schema/context/spring-context-3.0.xsd  
+		http://www.springframework.org/schema/task   
+		http://www.springframework.org/schema/task/spring-task-3.0.xsd
+		http://www.springframework.org/schema/mvc   
+		http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+
+	<!-- ***************这里开始是基本固定的**************** -->
+	<!-- 注解配置，如果有新的注解在后逗号分隔，这一段务必保留 -->
+	<!-- <bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver">
+	</bean> -->
+	
+	
+	
+	<bean id="multipartResolver" class="com.purvar.common.MyMultipartResolver">
+		<property name="excludeUrl" value="controller.gsp"/>
+		<!-- 解析request的编码 ，默认是 ISO-8859-1 -->
+		<property name="defaultEncoding" value="UTF-8" />
+		<!-- 设置最大允许的大小(字节)。-1表示没有限制(默认) 1024*1024*100=100MB -->
+		<property name="maxUploadSize" value="-1" />
+		<!--被允许的最大的内存的大小，Default is 10240 bytes -->
+		<property name="maxInMemorySize" value="20480" />
+		<!-- 一个类似懒加载的属性.可以定义该属性.让解析文件的时候再抛异常,然后Controller中定义异常处理的方法 -->
+		<property name="resolveLazily" value="true" />
+	</bean>
+	<context:component-scan base-package="com.purvar" />
+	<aop:aspectj-autoproxy proxy-target-class="true" />
+	<!-- 主要作用于@Controller，激活该模式 下面是一种简写形式，完全可以手动配置替代这种简写形式； 它会自动注册DefaultAnnotationHandlerMapping与AnnotationMethodHandlerAdapter 
+		两个bean, 是spring MVC为@Controllers分发请求所必须的 -->
+	<mvc:annotation-driven />
+	
+	<mvc:resources mapping="/js/**" location="/js/" />
+	<mvc:resources mapping="/css/**" location="/css/" />
+	<mvc:resources mapping="/imgs/**" location="/imgs/" />
+	<mvc:resources mapping="/demo/**" location="/demo/" />
+	<mvc:resources mapping="/rest/**" location="/rest/" />
+
+	<!--配置拦截器, 多个拦截器,顺序执行 -->
+	<!-- <mvc:interceptors> -->
+	<!-- <mvc:interceptor> -->
+	<!-- 匹配的是url路径， 如果不配置或/**,将拦截所有的Controller -->
+	<!-- <mvc:mapping path="/" /> -->
+	<!-- <mvc:mapping path="/userAction/**" /> -->
+	<!-- <mvc:mapping path="/test/**" /> -->
+	<!-- <bean class="com.talents.interceptor.CommonInterceptor"></bean> -->
+	<!-- </mvc:interceptor> -->
+	<!-- 当设置多个拦截器时，先按顺序调用preHandle方法，然后逆序调用每个拦截器的postHandle和afterCompletion方法 -->
+	<!-- </mvc:interceptors> -->
+
+	<task:annotation-driven />
+	<!-- jsp页面解析器，当Controller返回XXX字符串时，先通过拦截器，然后该类就会在/WEB-INF/views/目录下，查找XXX.jsp文件 -->
+	<bean
+		class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		<property name="mediaTypes">
+			<map>
+				<entry key="html" value="text/html" />
+				<entry key="spring" value="text/html" />
+				<entry key="json" value="application/json" />
+			</map>
+		</property>
+		<property name="viewResolvers">
+			<list>
+				<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+					<property name="prefix" value="/WEB-INF/view/" />
+					<property name="suffix" value=".jsp" />
+					<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+				</bean>
+			</list>
+		</property>
+		<property name="defaultViews">
+			<list>
+				<bean
+					class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />
+			</list>
+		</property>
+	</bean>
+	<!-- 读取数据库配置所在 -->
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="classpath:/jdbc.properties" />
+	</bean>
+	
+	<bean id="pageInterceptor" class="com.purvar.common.crud.pageing.interceptor.PageInterceptor" />
+	
+	<!-- *************** 数据库配置 **************** -->
+	<bean id="db_main" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:orcl" />
+		<property name="username" value="MOBILEMANAGE" />
+		<property name="password" value="MOBILEMANAGE" />
+	</bean>
+	
+	<bean id="db_sync" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="url" value="jdbc:oracle:thin:@172.29.201.248:1521:orcl" />
+		<property name="username" value="CSFounder" />
+		<property name="password" value="CSFounder" />
+	</bean>
+	
+	
+	<bean id="multipleDataSource" class="com.purvar.common.handle.DynamicDataSource">
+        <property name="defaultTargetDataSource" ref="db_main"/>
+        <property name="targetDataSources">
+            <map>
+                <entry key="db_main" value-ref="db_main"/>
+                <entry key="db_sync" value-ref="db_sync"/>
+            </map>
+        </property>
+    </bean>
+	
+	<bean id="db_SessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+	    <property name="dataSource" ref="multipleDataSource" />
+	    <property name="mapperLocations" value="classpath*:mapper/*mapper.xml" />
+	    <property name="plugins">
+	        <array>
+	            <ref bean="pageInterceptor" />
+	        </array>
+	    </property>
+	</bean>
+
+	<bean id="db_baseSqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="db_SessionFactory" />
+	</bean>
+	
+	<!-- *************** 数据库配置 End **************** -->
+	
+	<!-- 附件上传 -->
+	<!-- <tx:advice id="db_txAdvice" transaction-manager="db_TransactionManager">
+		<tx:attributes>
+			对save开头的public方法进行事务处理，传播基本为随时加入
+			<tx:method name="save*" rollback-for="java.lang.Exception"
+				read-only="false" propagation="REQUIRED" />
+			<tx:method name="insert*" rollback-for="java.lang.Exception"
+				read-only="false" propagation="REQUIRED" />
+			<tx:method name="update*" rollback-for="java.lang.Exception"
+				read-only="false" propagation="REQUIRED" />
+			<tx:method name="add*" rollback-for="java.lang.Exception"
+				read-only="false" propagation="REQUIRED" />
+		</tx:attributes>
+	</tx:advice> -->
+	<!-- **************END*db**************** -->
+</beans>

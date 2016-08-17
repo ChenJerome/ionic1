@@ -1,0 +1,35 @@
+<ion-modal-view align="center" ng-controller="formCtrl">
+  <ion-header-bar class="bar-positive" align-title="center">
+    <div ng-include="'templates/form-head.html'"></div>
+    <div class="title">测试单申请</div>
+  </ion-header-bar>
+  <ion-content delegate-handle="formMainScroll">
+
+    <div>
+      <div class="list">
+     	      </div>
+    </div>
+    <div class="detail-list">
+	      <div class="detail-list-bg">
+      
+        <div class="detail-title" ng-click="showOrHideDetail('detail-EMPTY_OBJECT',$event)">
+          	EMPTY_OBJECT
+          <i class="ion-plus detail-title-ion"></i>
+        </div>
+        <div style="display: none" class="detail-info" id="detail-EMPTY_OBJECT">
+          <div class="list"  ng-repeat="detail in formData.EMPTY_OBJECT">
+                        <div class="item item-input custom-item-input">
+                            <span class="list-index">{{$index+1}}</span>
+                            <span class="input-label custom-input-label ">合同结束时间</span>
+              <div class="custom-div" ng-bind="detail.end_date.val"></div>
+            </div>
+                        <div class="item item-input custom-item-input">
+                            <span class="input-label custom-input-label ">合同开始时间</span>
+              <div class="custom-div" ng-bind="detail.start_date.val"></div>
+            </div>
+                      </div>
+        </div>
+      </div>
+          </div>
+  </ion-content>
+</ion-modal-view>

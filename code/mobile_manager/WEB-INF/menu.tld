@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee web-jsptaglibrary_2_0.xsd"
+    version="2.0">
+	<tlib-version>1.0</tlib-version>
+	<short-name>menu</short-name>
+    <!-- 定义该标签库的URI -->
+    <uri>com.purvar.menu</uri>
+	<!-- 定义第一个标签 -->
+    <tag>
+        <name>topMenu</name>
+        <tag-class>com.purvar.common.tag.TopMenuTag</tag-class>
+        <body-content>empty</body-content>
+    </tag>
+    <tag>
+        <name>leftMenu</name>
+        <tag-class>com.purvar.common.tag.LeftMenuTag</tag-class>
+        <body-content>empty</body-content>
+    </tag>
+</taglib>

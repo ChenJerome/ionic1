@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/'>
+
+	<!-- appender of NT_online -->
+	<appender name="NT_online" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="../logs/ypc_online.log" />
+		<param name="Append" value="true" />
+		<param name="Encoding" value="UTF-8" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd|HH:mm:ss.SSS}|%t|%-5p|%m%n" />
+		</layout>
+	</appender>
+
+	<!-- appender of NT_online -->
+	<appender name="NT_error" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="../logs/ypc_error.log" />
+		<param name="Append" value="true" />
+		<param name="Encoding" value="UTF-8" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd|HH:mm:ss.SSS}|%t|%-5p|%m%n" />
+		</layout>
+	</appender>
+
+	<!-- appender of STDOUT -->
+	<appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
+		<param name="Target" value="System.out" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd|HH:mm:ss.SSS}|%t|%-5p|%m|(%F:%L)%n" />
+		</layout>
+	</appender>
+	<!-- 这里一下xx.com.talents的代表每个日志。分别对应了代码里的 LogFactory.getXXLog()方法，比如代码里是LogFactory.getDebugLog()， 
+		用那个log对象打印出来的内容就会遵循debug.com.founder里设定的规则 -->
+	<logger name="com.ypc">
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="NT_online" />
+	</logger>
+
+	<logger name="error.com.ypc">
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="NT_error" />
+	</logger>
+
+
+	<logger name="org.apache.ibatis" additivity="true">
+		<appender-ref ref="STDOUT" />   
+	</logger>
+	<logger name="java.sql.Connection" additivity="true">
+		<appender-ref ref="STDOUT" />   
+	</logger>
+	<logger name="java.sql.Statement" additivity="true">
+		<appender-ref ref="STDOUT" />   
+	</logger>
+	<logger name="java.sql.PreparedStatement" additivity="true">
+		<appender-ref ref="STDOUT" />   
+	</logger>
+	<logger name="java.sql.ResultSet" additivity="true">
+		<appender-ref ref="STDOUT" />   
+	</logger>
+	<logger name="mapper" additivity="true">
+		<level value="DEBUG" />
+		<appender-ref ref="STDOUT" />   
+	</logger>
+
+
+	<!-- 特别注意！！如果希望log4j把mybatis的sql语句输出出来需要照下面这样设置，网上搜到得办法基本上都没用 -->
+	<!-- 这里放的是一个mybatis的包名，mybatis会把当前的sqlkey作为日志词缀，因此开发时如果需要打印语句就设置哪一个sqlkey到前面 -->
+
+	<root>
+		<priority value="DEBUG"></priority>
+	</root>
+
+</log4j:configuration>

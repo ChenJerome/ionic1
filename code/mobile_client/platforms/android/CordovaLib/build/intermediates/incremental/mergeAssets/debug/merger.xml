@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="E:\01_Work\01_Purvar\01_Produce\mobile-app\trunk\code\mobileapp\platforms\android\CordovaLib\assets"/></dataSet><dataSet config="debug"><source path="E:\01_Work\01_Purvar\01_Produce\mobile-app\trunk\code\mobileapp\platforms\android\CordovaLib\src\debug\assets"/></dataSet></merger>

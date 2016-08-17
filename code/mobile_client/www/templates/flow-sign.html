@@ -1,0 +1,42 @@
+<!--加签 -->
+<div class="custom-popover">
+  <ion-header-bar class="bar-stable bar-positive">
+    <button class="button back-button buttons button-clear header-item" ng-click="closeUPopover()">
+      <i class="icon ion-ios-arrow-back"></i>
+    </button>
+      <h1 class="title">加签</h1>
+    <a class="button" ng-click="selectSign();">确认</a>
+  </ion-header-bar>
+  <ion-content class="u-content">
+    <ion-refresher pulling-text="刷新" on-refresh="refresh();"></ion-refresher>
+    <ion-list>
+      <form>
+        <div class="bar bar-header item-input-inset">
+          <label class="item-input-wrapper">
+            <i class="icon ion-ios-search placeholder-icon"></i>
+            <input type="search" placeholder="姓名、员工号" ng-keyup="keyUp($event)" ng-model="search.searchText">
+          </label>
+          <span class="span-search">
+            <i ng-if="search.searchText != ''" ng-click="clearSearch()" class="icon ion-ios-close"></i>
+          </span>
+          <!--<button class="button button-clear" ng-click="queryUser()">查询</button>-->
+        </div>
+      </form>
+      <ion-item ng-repeat="user in userList" ng-click="selectUser($event, '{{user.USERID}}','{{user.USERNAME}}')" class="popover-user">
+        <div class="custom-div">
+          <span ng-bind="$index+1"></span>
+          <span ng-bind="user.USERNAME"></span>
+        </div>
+        <div class="custom-div org-name">
+          <span ng-bind="user.ORGNAME"></span>
+        </div>
+      </ion-item>
+    </ion-list>
+    <ion-infinite-scroll
+      icon="ion-loading-d"
+      on-infinite="loadMore();"
+      distance="1%">
+    </ion-infinite-scroll>
+  </ion-content>
+</div>
+
